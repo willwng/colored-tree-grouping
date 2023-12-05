@@ -19,7 +19,8 @@ class Graph:
         return "\n".join([str(node) for node in self.nodes])
 
     def get_nodes(self):
-        return copy.deepcopy(self.nodes)
+        clone = copy.deepcopy(self.nodes)
+        return clone
 
     def to_graphviz(self):
         dot = graphviz.Digraph()
@@ -36,3 +37,15 @@ class Graph:
             if len(node.prev) > 1:
                 joins.append(node)
         return joins
+
+    def prune(self):
+        for node in self.nodes:
+            protocols = [predecessor.protocol for predecessor in node.prev]
+            if node.protocol not in protocols:
+                continue
+            other_protocols = [p for p in protocols if p != node.protocol]
+            if len(other_protocols) == 1:
+                for p in node.prev:
+                    if p.protocol == other_protocols[0]:
+                        node.remove_predecessor(p)
+                        p.remove_successor(node)
