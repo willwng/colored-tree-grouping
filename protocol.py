@@ -9,8 +9,8 @@ def get_all_protocols() -> List[Protocol]:
     return [Protocol.MPC, Protocol.ABY, Protocol.WIL, Protocol.VIV, Protocol.SAM, Protocol.COM]
 
 
-def get_random_protocol() -> Protocol:
-    return random.choice(get_all_protocols())
+def get_random_protocol(n_protocol: int) -> Protocol:
+    return random.choice(get_all_protocols()[:n_protocol])
 
 
 class Protocol(Enum):

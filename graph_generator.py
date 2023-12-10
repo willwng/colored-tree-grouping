@@ -14,10 +14,10 @@ def assign_protocol(i: int) -> Protocol:
         return Protocol.WIL
 
 
-def get_random_dag(n: int, p: float):
+def get_random_dag(n: int, p: float, n_protocol: int):
     g = nx.gnp_random_graph(n, p, directed=True)
     dag = nx.DiGraph([(u, v, {'weight': random.randint(-n, n)}) for (u, v) in g.edges() if u < v])
-    nodes = [Node(data=str(i), protocol=get_random_protocol()) for i in range(n)]
+    nodes = [Node(data=str(i), protocol=get_random_protocol(n_protocol)) for i in range(n)]
     edges = [(nodes[edge[0]], nodes[edge[1]]) for edge in dag.edges()]
     graph = Graph(nodes=nodes, edges=edges)
     return graph

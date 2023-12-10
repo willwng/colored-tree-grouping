@@ -20,11 +20,12 @@ def get_num_protocol_swaps(nodes: List[Node]) -> int:
 
 def main():
     n_swaps = []
-    for i in range(100):
-        p = uniform(0.1, 0.5)
-        n = randint(5, 9)
-        graph = get_random_dag(n=n, p=p)
-        graph.prune()
+    n_dags = 1000
+    for i in range(n_dags):
+        p = uniform(0.1, 0.9)
+        n = randint(3, 10)
+        n_protocols = min(randint(2, 5), n)
+        graph = get_random_dag(n=n, p=p, n_protocol=n_protocols)
 
         sorted_nodes = rank_sort(graph)
         num_swaps = get_num_protocol_swaps(sorted_nodes)
@@ -41,7 +42,10 @@ def main():
             quit()
 
     # plot distribution of n_swaps
-    plt.hist(n_swaps, bins=30)
+    plt.title(f"{n_dags} Random DAGs, size 3-10, p=0.1-0.9, 2-5 protocols")
+    plt.hist(n_swaps, bins=10, weights=[1 / len(n_swaps)] * len(n_swaps))
+    plt.xlabel(r"$\alpha$" + "= # swaps / # best swaps")
+    plt.ylabel("Frequency")
     plt.show()
     return
 
