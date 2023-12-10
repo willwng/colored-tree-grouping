@@ -1,12 +1,11 @@
 # Colored Graph Grouping
 This is a demo project to show a problem:
-- You are given a directed acyclic graph, $G = (V,E)$
-- Each vertex in $V$ contains a "coloring/protocol" (think of this as a machine to be computed on).
-- $f : V \to C$, where $C$ is the set of colors
+- Given a directed acyclic graph, $G = (V,E)$, each vertex in $V$ contains a "coloring/protocol" (think of this as a machine to be computed on).
+- $f : V \to C$, where $C$ is the set of colors/protocols
 
-We want to find a sorting of the nodes such that:
+We want to find a sorting $\pi$ of the nodes ($v_{\pi_1}, v_{\pi_2}, \dots, v_{\pi_n}$) that:
 - For all $e = (v_1, v_2) \in E$, $v_1$ is ordered before $v_2$
-- Minimize the number of "color/protocol" changes. That is, for each consecutive $v_i, v_j$ in the sort, there is a change if $f(v_i) \neq f(v_j)$
+- Minimizes the number of "color/protocol" changes. That is, for each consecutive $v_{\pi_i}, v_{\pi_j}$ in the sort, there is a change if $f(v_{\pi_i}) \neq f(v_{\pi_j})$
 
 **Example**
 ![image](https://github.com/willwng/colored-tree-grouping/assets/8275672/e054caf5-f0d0-4e10-860a-10c11f228855)
