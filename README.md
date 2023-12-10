@@ -11,4 +11,4 @@ We want to find a sorting $\pi$ of the nodes ($v_{\pi_1}, v_{\pi_2}, \dots, v_{\
 ![image](https://github.com/willwng/colored-tree-grouping/assets/8275672/e054caf5-f0d0-4e10-860a-10c11f228855)
 ![image](https://github.com/willwng/colored-tree-grouping/assets/8275672/019989a2-7a84-4793-9d58-e458f9814bae)
 
-The following ordering is not optimal since we sort by all the red, then green, then blue
+The following ordering is not optima. An optimal solution would perform all red, then green, then blue.
